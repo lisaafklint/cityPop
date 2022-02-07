@@ -2,61 +2,23 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StyleSheet, Text, View, TouchableHighlight, Button, Pressable} from 'react-native';
+// import { Icon } from 'react-native-elements';
+import Home from './Home/homeScreen.js'
+import City from './Search/searchByCity.js'
+import Country from './Search/searchByCountry.js'
 
-export default function App() {
+const Stack = createNativeStackNavigator();
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <View style={styles.textContainer}>
-        <Text CityPop style={styles.title}>
-          CityPop
-        </Text>
-      </View>
-
-      <View style={styles.buttonContainer}>
-        <Pressable 
-          onPress={() => {}} >
-          <Text style={styles.buttonText}> SEARCH BY CITY </Text>
-        </Pressable>
-
-        <Pressable 
-          onPress={() => {}} >
-          <Text style={styles.buttonText}> SEARCH BY COUNTRY </Text>
-        </Pressable>
-
-      </View>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName='Home'>
+        <Stack.Screen name='Home' component={Home} />
+        <Stack.Screen name='City' component={City} />
+        <Stack.Screen name='Country' component={Country} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  title: {
-    textAlign: 'center',
-    color: 'black',
-    fontWeight: 'bold',
-    fontSize: 20
-  },
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
-    backgroundColor: 'grey',
-    alignItems: 'center',
-  },
-  textContainer: {
-    flex: 3,
-/*     backgroundColor: "green",
- */    justifyContent: 'center'
-  },
-  buttonContainer: {
-    flex:6,
-/*     backgroundColor: "red",
- */ flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems:'center'
-  },
-  buttonText: {
-    fontSize: 30,
-    fontWeight: "bold",
-    color: 'black'
-  }
-});
+export default App;
