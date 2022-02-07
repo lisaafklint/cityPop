@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StyleSheet, Text, View, TouchableHighlight, Button, Pressable} from 'react-native';
 
 
-export default function App() {
+const Home = ({navigation}) => {
     return (
       <View style={styles.container}>
         <View style={styles.textContainer}>
@@ -15,12 +15,16 @@ export default function App() {
   
         <View style={styles.buttonContainer}>
           <Pressable 
-            onPress={() => {}} >
+            onPress={() => {
+                navigation.navigate('City')
+            }} >
             <Text style={styles.buttonText}> SEARCH BY CITY </Text>
           </Pressable>
   
           <Pressable 
-            onPress={() => {}} >
+            onPress={() => {
+                navigation.navigate('Country')
+            }} >
             <Text style={styles.buttonText}> SEARCH BY COUNTRY </Text>
           </Pressable>
   
@@ -28,6 +32,7 @@ export default function App() {
       </View>
     );
   }
+export default Home
   
   const styles = StyleSheet.create({
     title: {
