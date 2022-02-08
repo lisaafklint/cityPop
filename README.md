@@ -5,9 +5,9 @@ An application that can display the population of cities of the world. The user 
 The data desplayed if fetched from the GeoNames API
 Requires the app Expo Go that can be downloaded from an app store
 
- Recquires Node.js and Expo CLI
- Expo can be installed globally with the command:
- npm install expo-cli --global
+Recquires Node.js and Expo CLI
+Expo can be installed globally with the command:
+npm install expo-cli --global
 
 ## Installing and running the project
 The program can be cloned down from git.
