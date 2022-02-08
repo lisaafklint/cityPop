@@ -2,6 +2,12 @@ import React, { useState } from 'react';
 import { AntDesign} from '@expo/vector-icons'
 import { StyleSheet, Text, View, TouchableOpacity, TextInput} from 'react-native';
 
+/*
+    The user can enter a country of choice
+    Users will get an alert if input is symbols or numbers
+    The input country is then sent as a parameter to the displayCountry screen 
+*/
+
 const Country = ({navigation}) => {
     const[textInput, setTextInput] = useState("")
     return (
@@ -12,9 +18,11 @@ const Country = ({navigation}) => {
           </View>
           <View style={styles.inputContainer}>
             <TextInput style={styles.textBox}
+                //Updates the textInput every time the uses presses a key
                 placeholder = " Enter a country...  " 
                 onChangeText = {(text) => setTextInput(text)}
                 onSubmitEditing = { () => {
+                  //controlles if it is a valid input
                   if(validateInput(textInput)){
                       setTextInput(textInput)
                   } else {
@@ -33,9 +41,9 @@ const Country = ({navigation}) => {
                 })
               }
             }}>
-                <View style={styles.roundshape}>
-                    <AntDesign name="search1" size={40} color="black" />
-                </View>
+              <View style={styles.roundshape}>
+                <AntDesign name="search1" size={40} color="black" />
+              </View>
             </TouchableOpacity>
           </View>
         </View>
@@ -44,6 +52,7 @@ const Country = ({navigation}) => {
   }
 export default Country
 
+//Function to evaluate a string to see if it can be a city (has numbers/symbols/is empty)
 function validateInput(country) {
     var isValidName = true;
     if(/[!@#$%^&*(),.?":{}|<>]/g.test(country) || !/^[A-Z]/.test(country) || /\d+/g.test(country)) {

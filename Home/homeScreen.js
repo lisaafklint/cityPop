@@ -1,9 +1,11 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { StyleSheet, Text, View, TouchableHighlight, Button, Pressable} from 'react-native';
+import { StyleSheet, Text, View, Pressable} from 'react-native';
 
-
+/*
+  Home screen of the application. 
+  Allows the user to decide to search by country or city
+  Depending on choice the user is navigated to that screen
+*/
 const Home = ({navigation}) => {
     return (
       <View style={styles.container}>
@@ -12,9 +14,9 @@ const Home = ({navigation}) => {
             CityPop
           </Text>
         </View>
-  
         <View style={styles.buttonContainer}>
           <Pressable 
+          //catch if the uses touches the Pressable
             onPress={() => {
                 navigation.navigate('City')
             }} 

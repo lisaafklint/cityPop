@@ -1,5 +1,11 @@
 import React, {useEffect, useState } from 'react';
-import { StyleSheet, Text, View,  ActivityIndicator, FlatList} from 'react-native';
+import { StyleSheet, Text, View,  ActivityIndicator} from 'react-native';
+
+/*
+    Displays the population of a chooses city+
+    If no data can be found an alert will be displayed
+    As the data is fetched a loading animation is displayed
+*/
 
 const Cities = ({route, navigation}) => {
     const{name} = route.params;

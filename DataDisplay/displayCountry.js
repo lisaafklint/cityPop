@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { AntDesign} from '@expo/vector-icons';
 import { StyleSheet, Text, View, TouchableOpacity, ActivityIndicator, FlatList} from 'react-native';
 
+/*
+    Displays cities in order of  highest population from the country entered by the user
+    If no data can be found an alert will be displayed
+    As the data is fetched a loading animation is displayed
+*/
 
 const Countries = ({route, navigation}) => {
     const{name} = route.params;
     const[isLoading, setLoading] = useState(true);
     const[data, setData] = useState([]);
 
+    //First finds the country-code for the country and uses it to fins the cities for the country
     const getCities = async () => {
         try {
             const response = await fetch('http://api.geonames.org/searchJSON?maxRows=1&cities=cities1000&username=weknowit&q=' + name);

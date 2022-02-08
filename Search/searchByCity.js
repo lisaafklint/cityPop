@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import { AntDesign} from '@expo/vector-icons'
 import { StyleSheet, Text, View, TouchableOpacity, TextInput} from 'react-native';
 
+/*
+    The user can enter a city of choice
+    Users will get an alert if input is symbols or numbers
+    The input city is then sent as a parameter to the displayCity screen 
+*/
 const City = ({navigation}) => {
     const[textInput, setTextInput] = useState("")
     return (
@@ -12,9 +17,12 @@ const City = ({navigation}) => {
             </View>
             <View style={styles.inputContainer}>
                 <TextInput style={styles.textBox}
+                    //Updates the textInput every time the uses presses a key
                     placeholder = " Enter a city...  " 
                     onChangeText = {(text) => setTextInput(text)}
+                   // value= {textInput}
                     onSubmitEditing = { () => {
+                        //controlles if it is a valid input
                         if(validateInput(textInput)){
                             setTextInput(textInput)
                         } else {
@@ -22,7 +30,6 @@ const City = ({navigation}) => {
                             setTextInput("");
                         }
                     }}
-                    //value= {textInput}
                     />
                 <View style={styles.space} />
                 <TouchableOpacity onPress={() => {
@@ -45,6 +52,7 @@ const City = ({navigation}) => {
   }
 export default City
 
+//Function to evaluate a string to see if it can be a city (has numbers/symbols/is empty)
 function validateInput(city) {
     var isValidName = true;
     if(/[!@#$%^&*(),.?":{}|<>]/g.test(city) || !/^[A-Ö]/.test(city) || /\d+/g.test(city)) {
