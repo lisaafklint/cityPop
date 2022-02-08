@@ -6,6 +6,8 @@ import { StyleSheet, Text, View, TouchableHighlight, Button, Pressable} from 're
 import Home from './Home/homeScreen.js'
 import City from './Search/searchByCity.js'
 import Country from './Search/searchByCountry.js'
+import Countries from './DataDisplay/displayCountry.js'
+import Cities from './DataDisplay/displayCity.js'
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +18,8 @@ const App = () => {
         <Stack.Screen name='Home' component={Home} />
         <Stack.Screen name='City' component={City} />
         <Stack.Screen name='Country' component={Country} />
+        <Stack.Screen name = 'Countries' component={Countries} />
+        <Stack.Screen name = 'Cities' component={Cities} />
       </Stack.Navigator>
     </NavigationContainer>
   );
