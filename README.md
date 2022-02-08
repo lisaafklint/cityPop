@@ -12,7 +12,8 @@ Expo can be installed globally with the command:
 npm install expo-cli --global
 
 ## Installing and running the project
-The program can be cloned down from git.
+The program can be cloned down from git (master branch).
+
 
 Run the command to install the required dependencies of the project:
 ### npm install 
