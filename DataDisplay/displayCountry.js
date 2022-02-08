@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { AntDesign} from '@expo/vector-icons';
-import { StyleSheet, Text, View, TouchableOpacity, Button, Pressable, TextInput, ActivityIndicator, FlatList} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ActivityIndicator, FlatList} from 'react-native';
 
 
 const Countries = ({route, navigation}) => {
@@ -35,13 +35,13 @@ const Countries = ({route, navigation}) => {
 
     return (
         <View style={styles.container}>
-                {isLoading ? <ActivityIndicator/> : (
+                {isLoading ? <ActivityIndicator color="#0D47A1" size="large" animating={true}/> : (
                 <FlatList
                     ListHeaderComponent={()=><Text style={styles.title}>
                         {name}
                     </Text>}
                     data={data}
-                    keyExtractor={({ id }, index) => id}
+                    keyExtractor={(item, index) => 'item'+index} //Add this line
                     renderItem={({ item }) => 
                     <TouchableOpacity onPress={() => {
                         navigation.navigate('Cities', {
@@ -50,7 +50,6 @@ const Countries = ({route, navigation}) => {
                     }}>
                     <Text style={styles.items}>{item.toponymName}</Text>
                     </TouchableOpacity>
-                    
                 }/>
                 )}
         </View>

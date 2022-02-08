@@ -1,8 +1,5 @@
 import React, {useEffect, useState } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { AntDesign} from '@expo/vector-icons'
-import { StyleSheet, Text, View, TouchableOpacity, Button, Pressable, TextInput, ActivityIndicator, FlatList} from 'react-native';
+import { StyleSheet, Text, View,  ActivityIndicator, FlatList} from 'react-native';
 
 const Cities = ({route, navigation}) => {
     const{name} = route.params;
@@ -13,7 +10,11 @@ const Cities = ({route, navigation}) => {
         try {
          const response = await fetch('http://api.geonames.org/searchJSON?maxRows=1&username=weknowit&q=' + name);
          const json = await response.json();
-         setData(json.geonames[0].population);
+         try {
+             setData(json.geonames[0].population);
+         } catch {
+            alert("Could not find a city with this name, please try again")
+         }
        } catch (error) {
          alert("Could not find a city with this name, please try again")
          console.error(error);
@@ -34,9 +35,11 @@ const Cities = ({route, navigation}) => {
                  </Text>
             </View>
             <View style={styles.popContainer}>
-                {isLoading ? <ActivityIndicator/> : (
-                    <Text >
-                        Population {data}
+                {isLoading ? <ActivityIndicator color="#0D47A1" size="large" animating={true}/>  : (
+                    <Text style= {styles.text}>
+                        Population: 
+                        {"\n"}
+                        {data}
                     </Text>
 
                 )}
@@ -49,31 +52,26 @@ export default Cities
 const styles = StyleSheet.create({
     title: {
       textAlign: 'center',
-      color: 'black',
+      color: '#0D47A1',
       fontWeight: 'bold',
       fontSize: 35
     },
+    text: {
+        textAlign: 'center',
+        color: '#0D47A1',
+        fontWeight: 'bold',
+        fontSize: 25
+      },
     container: {
       flex: 1,
       flexDirection: 'column',
       justifyContent: 'center',
-      backgroundColor: 'white',
+      backgroundColor: '#E3F2FD',
       alignItems: 'center',
     },
-    items: {
-        padding: 10,
-        fontSize: 18,
-        height: 44,
-      },
       textContainer: {
         flex: 3,
          justifyContent: 'center'
-      },
-    title: {
-        textAlign: 'center',
-        color: 'black',
-        fontWeight: 'bold',
-        fontSize: 20
       },
       popContainer: {
         flex:7,

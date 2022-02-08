@@ -13,7 +13,6 @@ const City = ({navigation}) => {
             <View style={styles.inputContainer}>
                 <TextInput style={styles.textBox}
                     placeholder = " Enter a city...  " 
-                    multiline={true}
                     onChangeText = {(text) => setTextInput(text)}
                     onSubmitEditing = { () => {
                         if(validateInput(textInput)){
